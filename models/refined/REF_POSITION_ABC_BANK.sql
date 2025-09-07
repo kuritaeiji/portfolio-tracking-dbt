@@ -1,0 +1,11 @@
+WITH
+current_from_shapshot as (
+    SELECT *
+    FROM {{ ref('SNSH_ABC_BANK_POSITION') }}
+    WHERE DBT_VALID_TO IS NULL
+)
+SELECT
+    *
+    , POSITION_VALUE - COST_BASE as UNREALIZED_PROFIT
+    , ROUND(POSITION_VALUE / COST_BASE, 5) as UNREALIZED_PROFIT_PCT
+FROM current_from_shapshot
