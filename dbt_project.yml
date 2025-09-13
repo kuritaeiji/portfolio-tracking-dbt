@@ -40,5 +40,13 @@ seeds:
         LOAD_TS: TIMESTAMP
       +post-hook:
         - "UPDATE {{ this }} SET LOAD_TS = '{{ run_started_at }}' WHERE LOAD_TS IS NULL"
-
-
+    EXCHANGE:
+      +column_types:
+        LOAD_TS: TIMESTAMP
+      +post-hook:
+        - "UPDATE {{ this }} SET LOAD_TS = '{{ run_started_at }}' WHERE LOAD_TS IS NULL"
+    CURRENCY:
+      +column_types:
+        LOAD_TS: TIMESTAMP
+      +post_hook:
+        - "UPDATE {{ this }} SET LOAD_TS = '{{ run_started_at }}' WHERE LOAD_TS IS NULL"
