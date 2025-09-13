@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: FACT_POSITION
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - ACCOUNT_CODE
+              - SECURITY_CODE
+  - name: DIM_SECURITY
+    columns:
+      - name: SECURITY_CODE
+        tests:
+          - not_null
+          - unique
+          - has_default_key
+          - warn_on_multiple_default_key

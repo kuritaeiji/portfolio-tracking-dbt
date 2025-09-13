@@ -3,6 +3,13 @@ models:
   - name: REF_POSITION_ABC_BANK
     description: The positions we have in the ABC Bank portofolio
     columns:
+      - name: SECURITY_CODE
+        description: ポジションの証券コード
+        tests:
+          - not_null
+          - relationships:
+              to: ref('REF_ABC_BANK_SECURITY_INFO')
+              field: SECURITY_CODE
       - name: UNREALIZED_PROFIT
         description: The unrealized profit on the position
         tests:
