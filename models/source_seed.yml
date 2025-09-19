@@ -2,6 +2,14 @@ version: 2
 sources:
   - name: seeds
     schema: "{{ target.schema }}_SEED_DATA"
+    freshness: 
+      error_after:
+        count: 5
+        period: day
+      warn_after:
+        count: 3
+        period: day
+    loaded_at_field: LOAD_TS
     tables:
       - name: ABC_Bank_SECURITY_INFO
       - name: EXCHANGE
