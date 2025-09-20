@@ -1,4 +1,3 @@
-{{ config(materialized='ephemeral') }}
 WITH
 src_data as (
     SELECT
@@ -21,7 +20,7 @@ hashed as (
                 'SECURITY_NAME', 'EXCHANGE_CODE', 'REPORT_DATE',
                 'QUANTITY', 'COST_BASE', 'POSITION_VALUE', 'CURRENCY_CODE']) }} as POSITION_HDIFF
         , *
-        , '{{ run_started_at }}' as LOAD_TS_UTC
+        , '{{ run_started_at }}'::TIMESTAMP_NTZ as LOAD_TS_UTC
     FROM src_data
 )
 SELECT * FROM hashed

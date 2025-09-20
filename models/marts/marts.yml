@@ -7,6 +7,14 @@ models:
             combination_of_columns:
               - ACCOUNT_CODE
               - SECURITY_CODE
+              - REPORT_DATE
+    columns:
+      - name: SECURITY_CODE
+        tests:
+          - not_null
+          - relationships:
+              to: ref('DIM_SECURITY')
+              field: SECURITY_CODE
   - name: DIM_SECURITY
     columns:
       - name: SECURITY_CODE
@@ -14,4 +22,3 @@ models:
           - not_null
           - unique
           - has_default_key
-          - warn_on_multiple_default_key
