@@ -1,4 +1,3 @@
-{{ config(materialized='ephemeral') }}
 WITH
 src_data as (
     SELECT

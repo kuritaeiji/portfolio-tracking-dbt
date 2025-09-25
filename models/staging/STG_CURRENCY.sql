@@ -1,4 +1,3 @@
-{{ config(materialized='ephemeral') }}
 with src_data as (
     SELECT
         ALPHABETICCODE as CURRENCY_ALPHABETIC_CODE -- TEXT
